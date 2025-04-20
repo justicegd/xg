@@ -88,7 +88,6 @@
 <!-- Hero Section -->
 <section class="hero">
     <video autoplay muted loop>
-<!--        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">-->
         <source src="video.mp4" type="video/mp4">
         您的瀏覽器不支援影片播放。
     </video>
@@ -100,7 +99,7 @@
             <a href="#enroll" class="btn btn-lg btn-primary">招生說明</a>
             <a href="#afterclass" class="btn btn-lg btn-info">課輔時間</a>
             <a href="#feature" class="btn btn-lg btn-success">教學特色</a>
-            <a href="#videos" class="btn btn-lg btn-dark">相關影片</a>
+            <a href="#videos" class="btn btn-lg btn-dark">活動照片</a>
             <a href="#about" class="btn btn-lg btn-secondary">關於我們</a>
         </div>
     </div>
@@ -168,23 +167,55 @@
 
 <section id="videos" class="py-5 text-center" style="background-color: #f0f8ff;">
     <div class="container">
-        <h2 class="mb-4">🎬 相關影片</h2>
-        <div class="d-flex flex-wrap justify-content-center gap-5">
-            <div class="text-center">
-                <a href="https://www.youtube.com/watch?v=IqfP-lB1edI" target="_blank">
-                    <img src="https://img.youtube.com/vi/IqfP-lB1edI/0.jpg" alt="園所介紹影片" style="height: 100px; border-radius: 8px;">
-                </a>
-                <p class="mt-2">園所介紹</p>
-            </div>
-            <div class="text-center">
-                <a href="https://www.youtube.com/watch?v=EGYSDOzmnF8" target="_blank">
-                    <img src="https://img.youtube.com/vi/yjetgRDO-jM/0.jpg" alt="活動紀錄影片" style="height: 100px; border-radius: 8px;">
-                </a>
-                <p class="mt-2">活動紀錄</p>
+        <h2 class="mb-4">🎬 活動照片</h2>
+        <div id="lightbox-gallery" class="d-flex overflow-auto gap-3 px-3">
+            <img src="img/1.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/2.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/3.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/4.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/5.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/6.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/7.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/8.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/9.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/10.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/11.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/12.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/13.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+            <img src="img/14.jpg" alt="活動照片" class="img-fluid rounded shadow-sm" style="height: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#lightboxModal">
+        </div>
+<!--        <div class="col-6 col-sm-4 col-md-3">-->
+<!--            <img src="img/2.jpg" alt="" class="img-fluid rounded shadow-sm" data-bs-toggle="modal" data-bs-target="#lightboxModal" style="cursor:pointer;" data-img-src="https://img.youtube.com/vi/yjetgRDO-jM/0.jpg">-->
+<!--        </div>-->
+<!--        <div class="col-6 col-sm-4 col-md-3">-->
+<!--            <img src="img/3.jpg" alt="" class="img-fluid rounded shadow-sm" data-bs-toggle="modal" data-bs-target="#lightboxModal" style="cursor:pointer;" data-img-src="https://img.youtube.com/vi/tgbNymZ7vqY/0.jpg">-->
+<!--        </div>-->
+    </div>
+    <p class="text-muted mt-3">點擊圖片可放大檢視</p>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div class="modal fade" id="lightboxModal" tabindex="-1" aria-labelledby="lightboxModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-body text-center p-0">
+                <img src="" alt="lightbox" class="img-fluid rounded" id="lightboxModalImg">
             </div>
         </div>
     </div>
-</section>
+</div>
+
+<script>
+    const lightboxImgs = document.querySelectorAll('#lightbox-gallery img');
+    const lightboxImg = document.getElementById('lightboxModalImg');
+    lightboxImgs.forEach(img => {
+        img.addEventListener('click', function () {
+            const imgSrc = this.getAttribute('src');
+            lightboxImg.src = imgSrc;
+        });
+    });
+</script>
 
 <section id="about" class="py-5 text-center" style="background-color: #ffffff;">
     <div class="container">
